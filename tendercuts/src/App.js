@@ -1,13 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './component/Navbar';
-import Categories from './component/Categories';
+
+import AllRoutes from "./component/Allroutes"
+import { Footer } from './component/footer';
 
 function App() {
   return (
     <div className="App">
-       <Navbar/>
-     <Categories/>
+      <Navbar/>
+       <AllRoutes/>
+      <Footer/>
     </div>
   );
 }
