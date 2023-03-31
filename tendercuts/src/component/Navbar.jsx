@@ -2,6 +2,8 @@ import {  Search2Icon } from '@chakra-ui/icons';
 import { Box, IconButton, Image, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Flex, Spacer,useBreakpointValue } from '@chakra-ui/react'
 import { BiCart, BiLayer, BiUser } from "react-icons/bi";
 import img1 from "../images/tendercut.jpg"
+
+import {Link} from "react-router-dom"
 function Navbar() {
 
     return (
@@ -10,10 +12,11 @@ function Navbar() {
                
                 <Flex >
                     <Box w="30%">
-                        <Image w="50%"
+                       
+                            <Link to="/"> <Image w="50%"
                         border="2px solid"
                             src={img1}
-                            ml={10} />
+                            ml={10} /></Link>
                     </Box>
                     <Box>
                         <InputGroup mr={14} >
@@ -48,7 +51,7 @@ function Navbar() {
                             <span>Categories</span>
                             <MenuList>
                                 <MenuItem >
-                                    chicken
+                                   <Link to="/Chicken" >Chicken</Link> 
                                 </MenuItem>
                                 <MenuItem >
                                     seaFood
@@ -98,7 +101,7 @@ function Navbar() {
                     </Box>
                 </Flex>
             </Box>
-
+            
         </>
     )
 }
