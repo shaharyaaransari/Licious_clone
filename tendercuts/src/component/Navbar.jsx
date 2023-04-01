@@ -1,5 +1,5 @@
 import {  Search2Icon } from '@chakra-ui/icons';
-import { Box, IconButton, Image, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Flex, Spacer,useBreakpointValue } from '@chakra-ui/react'
+import { Box, IconButton, Image, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Flex, Spacer } from '@chakra-ui/react'
 import { BiCart, BiLayer, BiUser } from "react-icons/bi";
 import img1 from "../images/tendercut.jpg"
 
@@ -96,7 +96,7 @@ function Navbar() {
                      variant='outline'
                      border="none"
                      m={2}/>
-                     <span>Cart</span>
+                    <Link to="/Cart"> <span>Cart</span></Link>
                        </Menu>
                     </Box>
                 </Flex>
