@@ -1,11 +1,22 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Image, Stack ,Text} from "@chakra-ui/react";
-// Title": "Chicken Breast - Boneless",
-// "image": "https://dao54xqhg9jfa.cloudfront.net/OMS-ProductMerchantdising/fcea4075-0ed2-23c1-2b3f-1cddcbd1d11f/original/Chicken-Breast-Boneless-(3-4-Pieces)-Hero-Shot_(1).jpg",
-// "description": "Skinless & boneless pieces of chicken breast.",
-// "price": 265,
-// "Arrival": "Tomorrow 8 AM - 11 AM"
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Heading, Image, Stack ,Text} from "@chakra-ui/react";
+import axios from "axios";
 
-function ChickenCard({Title,image,description,price,Arrival}){
+
+
+function ChickenCard({Title,image,description,price,Arrival,id}){
+  let obj={id:id,title:Title,image:image,desc:description,price:price,Arrival:Arrival}
+   
+  const handleCart=()=>{
+    axios.post(`https://cute-puce-jackrabbit-robe.cyclic.app/Cart`,obj)
+    .then((response)=> {
+      console.log(response);
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  }
+ 
+
     return (
         <>
         <Card maxW='sm' >
@@ -29,7 +40,8 @@ function ChickenCard({Title,image,description,price,Arrival}){
  
   <CardFooter>
     <ButtonGroup spacing='2'>
-    <Button variant='solid' colorScheme='red'>
+      
+    <Button variant='solid' colorScheme='red' onClick={()=>handleCart()} >
         Add 
       </Button>
       

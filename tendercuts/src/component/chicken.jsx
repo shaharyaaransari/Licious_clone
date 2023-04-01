@@ -1,20 +1,51 @@
-import { Heading, HStack, VStack ,Image, Box, Select, Stack, Grid} from "@chakra-ui/react";
+import { Heading, HStack,Spacer ,Image, Box, Select,  Grid, Button, ButtonGroup} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ChickenCard from "./chickenCard";
+import Loading from "./Loading";
+
+
 function Chicken(){
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState(false);
   const [data,setData] =useState([]);
-  const [page,setPage] =useState(1)
-    const fetchData = ()=>{
-        axios.get(`https://cute-puce-jackrabbit-robe.cyclic.app/chickenMeat`)
+  const [page,setPage] =useState(1);
+
+  const [sort,setSort] = useState('')
+// react-slick 
+let url = `https://cute-puce-jackrabbit-robe.cyclic.app/chickenMeat?_page=${page}&_limit=12`
+if(sort){
+  url= `https://cute-puce-jackrabbit-robe.cyclic.app/chickenMeat?_page=${page}&_limit=12&_sort=price&_order=${sort}`
+}
+  
+
+  const fetchData = (page)=>{
+      setLoading(true)
+        axios.get(url)
+        
         .then((res)=>{
-            setData(res.data)
+         
+          setData(res.data)
+            setLoading(false)
             console.log(res.data)
+        })
+        .catch(()=>{
+      setErr(true)
         })
     }
     useEffect(()=>{
-       fetchData()
-    },[])
+       fetchData(page)
+    },[page,sort])
+
+    const handleChange = (val) => {
+      let updatepage = page + val;
+      setPage(updatepage);
+      console.log("data",updatepage)
+    };
+      
+    if(loading){
+      return <Loading/>
+    }
     return (
         <>
     <Box ml={10}>
@@ -36,20 +67,34 @@ function Chicken(){
      <span>No Added Chemical , Antibiotic residue free.</span>
      </HStack>
      <Box width="300px"  ml={10}>
-     <Select placeholder='Select price'>
-    <option>High_To_low</option>
-    <option>Low_To_High</option>
+     <Select placeholder='Select price' onChange={(e)=>setSort(e.target.value)}>
+    <option value="desc">High_To_low</option>
+    <option  value="asc">Low_To_High</option>
     
   </Select>
 </Box>
       <Grid templateColumns='repeat(3, 1fr)' gap={6}>
       {
         data?.map((item)=>{
-         return  <ChickenCard  key={item.id} {...item}/> 
+         return  <ChickenCard  key={item.id} {...item} /> 
         })
       }
     
       </Grid>
+     
+      <ButtonGroup spacing='2' mt={4}>
+    <Button variant='solid' colorScheme='red' onClick={() => handleChange(-1)} isDisabled={page===1}>
+        PRE
+      </Button>
+      <Button variant='solid' colorScheme='red' isDisabled >
+        {page}
+      </Button>
+      <Button variant='solid' colorScheme='red' onClick={() => handleChange(1)} isDisabled={page===4}>
+        NEXT
+      </Button>
+    </ButtonGroup>
+
+  
         </>
     )
 }
