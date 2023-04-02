@@ -3,6 +3,8 @@ import Categories from "./Categories";
 import Chicken from "./chicken"
 import Cart from "./cart";
 
+import Combo from "./combo/Combo"
+import Briyani from "./combo/Briyani";
  function AllRoutes(){
     return (
         <>
@@ -10,6 +12,9 @@ import Cart from "./cart";
            <Route path="/" element={<Categories/>}/>
             <Route path="/Chicken" element={<Chicken/>}/>
             <Route path="/Cart" element={<Cart/>}/>
+            <Route path="/Combo" element={<Combo/>}/>
+            <Route path="/Briyani" element={<Briyani/>}/>
+            
         </Routes>
         </>
     )

@@ -1,17 +1,10 @@
-import { VStack ,Box,Image, Heading, SimpleGrid} from "@chakra-ui/react"
-
-import Slider from "react-slick";
+import { VStack ,Box,Image, Heading, SimpleGrid, Container} from "@chakra-ui/react"
+import ProductSlider from "./Slider"
+import ProductSlider1 from "./Slider2"
+  import  ProductSlider2 from "./Sslidre"
+import {Link} from "react-router-dom"
 function Categories(){
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
-    cssEase: "linear"
-  }
+ 
     return(
        <>
        <VStack  mt={6}>
@@ -25,7 +18,7 @@ function Categories(){
   </Box>
   <Box  >
     <Image src="https://dao54xqhg9jfa.cloudfront.net/OMS-Category/e0ad08c2-c9ef-6f67-2882-95325d3b6951/original/Chicken_20.png"/>
-    <Heading as="p" size='xs' color="blackAlpha.800">Chicken</Heading>
+    <Link to="/Chicken"><Heading as="p" size='xs' color="blackAlpha.800">Chicken</Heading></Link>
   </Box>
   <Box  >
     <Image src="https://dao54xqhg9jfa.cloudfront.net/OMS-Category/0bb75668-5525-72db-4784-b513a55e121e/original/Fish_30.png"/>
@@ -58,11 +51,12 @@ function Categories(){
   </Box>
   <Box  >
     <Image src="https://dao54xqhg9jfa.cloudfront.net/OMS-Category/c28a5479-bbf1-1003-d296-90150074ea3b/original/Biryani_(1).png"/>
-    <Heading as="p" size='xs' color="blackAlpha.800">Briyani</Heading>
+    <Link to="/Briyani"><Heading as="p" size='xs' color="blackAlpha.800">Briyani</Heading></Link>
   </Box>
   <Box  >
     <Image src="https://dao54xqhg9jfa.cloudfront.net/OMS-Category/dfcc622c-de6a-7ad7-7329-23239fbab0af/original/Combo_(1).png"/>
-    <Heading as="p" size='xs' color="blackAlpha.800">Combos</Heading>
+    <Link to="/Combo" ><Heading as="p" size='xs' color="blackAlpha.800">Combos</Heading></Link>
+    
   </Box>
   <Box  >
     <Image src="https://dao54xqhg9jfa.cloudfront.net/OMS-Category/4ad0a144-8830-a4b5-90ee-216753328bbd/original/Masala_1.png"/>
@@ -77,31 +71,49 @@ function Categories(){
        </VStack>
        
        </VStack>
-       <Box>
-   React-slick
-   <Slider {...settings}>
+     <ProductSlider/>
+     <Heading as='h4' size='md'>Fresh at Licious!</Heading>
+     <Heading as='p' size='sm' color="gray" p={2}>Handpicked assortment just for you</Heading>
+          <Box display="flex" justifyContent="space-between" width="700px" ml="400px">
+            <Box >
+              <img style={{borderRadius:"20px" }} width="200px" src="https://dao54xqhg9jfa.cloudfront.net/oms/8afb0054-9ca3-2cd1-5951-68ea99d69923/original/Meaty_Bites_copy-4.jpeg" alt="" />
+            </Box>
+            <Box >
+              <img style={{borderRadius:"20px" }}  width="200px" src="https://dao54xqhg9jfa.cloudfront.net/oms/91af480b-5514-f257-f46d-fac389ec70d9/original/Mutton_Delights_copy_2-3.jpeg" alt="mutton" />
+            </Box>
+            <Box >
+              <img style={{borderRadius:"20px" }} width="200px" src="https://dao54xqhg9jfa.cloudfront.net/oms/8b097972-68f4-70bf-c4b2-3922b60852eb/original/DFD_New.jpeg" alt="fish" />
+            </Box>
+          </Box>
+          <Heading as='h4' size='md' pt={3}>Combos for you</Heading>
+          <Heading as='p' size='sm' color="gray" p={2}>Savour the savings!</Heading>
+          <ProductSlider1/>
+          <Box ml="250px" >
+            <Image src="https://www.licious.in/image/rebranding/svg/meatopia_join_now_desktop.svg" alt="food"/>
+          </Box>
+          <ProductSlider2/>
 
-   <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-   </Slider>
-    </Box> 
-
+          <Box  display="flex" bg="pink.100">
+<Container maxW='2xl'  centerContent>
+  <Box padding='4'  color='black' maxW='md'>
+    <p>We will sell only the meat that we would eat ourselves.</p>
+    At Licious, we’re big meat-lovers. And by big, we mean huge. So when it comes to the meat we put on your plate, we’re extremely picky. Every single product is handpicked by a team with years of experience.
+  </Box>
+  </Container>
+  <Container maxW='2xl' centerContent>
+   <Box padding='4'  color='black' >
+   <p>If it’s not fresh, we won’t sell it</p>
+   For meat to stay fresh and retain its natural juices, it needs to be stored at a temperature between 0° and 5°C. We maintain this temperature from the time we procure the product to cleaning, cutting and storing it, until it leaves for delivery. And even when it’s out for delivery, we keep it chilled right up to your doorstep.Did we mention that we’re obsessed?
+  </Box>
+  </Container>
+  <Container maxW='2xl' centerContent>
+   <Box padding='4' color='black' maxW='md'>
+    <p>
+We will charge only for what you buy</p>
+Doesn’t everyone do this? Not really. Most other places first weigh the meat, then cut up the pieces, and throw out the parts which aren’t fit to eat, such as offal, gizzard, wingtips, etc. But you still pay based on the original weight even though what you finally get is 10% to 30% less
+  </Box>
+</Container>
+</Box>
        </>
         
     )
