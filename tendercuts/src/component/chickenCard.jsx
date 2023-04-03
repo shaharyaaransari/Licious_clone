@@ -10,6 +10,7 @@ function ChickenCard({Title,image,description,price,Arrival,id}){
     axios.post(`https://cute-puce-jackrabbit-robe.cyclic.app/Cart`,obj)
     .then((response)=> {
       console.log(response);
+      alert('product Added to Cart')
     })
     .catch((err)=>{
       console.log(err)
