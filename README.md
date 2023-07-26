@@ -1,4 +1,4 @@
-#Tendercuts
+## Tendercuts
 Deployed Link - https://tendercuts.netlify.app/
   ## What is Tendercuts about?
    Tendercuts is an online e-commerce service offering high-quality, fresh seafood and meat.
