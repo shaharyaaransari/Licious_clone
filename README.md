@@ -6,7 +6,7 @@ Deployed Link - https://tendercuts.netlify.app/
 
 - Login/Signup
 - Sorting by price
-- Slider & Search for the product
+- Slider and search for the product
 - Add to Cart & Delete
 ## Tech Stacks Used:-
 React / Redux  / Json-Server / Chakra UI  / React-Router-Dom / Axios.
