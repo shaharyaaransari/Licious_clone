@@ -1,10 +1,10 @@
  import {Routes,Route} from "react-router-dom"
-import Categories from "./Categories";
-import Chicken from "./chicken"
-import Cart from "./cart";
+import Categories from "../Categories";
+import Chicken from "../chicken"
+import Cart from "../cart";
 
-import Combo from "./combo/Combo"
-import Briyani from "./combo/Briyani";
+import Combo from "../combo/Combo"
+import Briyani from "../combo/Briyani";
  function AllRoutes(){
     return (
         <>

@@ -1,21 +1,20 @@
-import { Heading, HStack,Spacer ,Image, Box, Select,  Grid, Button, ButtonGroup} from "@chakra-ui/react";
+import { Heading, HStack,Image, Box, Select,  Grid, Button, ButtonGroup} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ComboItem from "./ComboItem"
+import Loading from "../Loading";
 
 
 
 function Combo(){
   const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState(false);
   const [data,setData] =useState([]);
   const [page,setPage] =useState(1);
-
   const [sort,setSort] = useState('')
 // react-slick 
-let url = `https://cute-puce-jackrabbit-robe.cyclic.app/Combos?_page=${page}&_limit=12`
+let url = `https://products-wbq6.onrender.com/Combos?_page=${page}&_limit=12`
 if(sort){
-  url= `https://cute-puce-jackrabbit-robe.cyclic.app/Combos?_page=${page}&_limit=12&_sort=price&_order=${sort}`
+  url= `https://products-wbq6.onrender.com/Combos?_page=${page}&_limit=12&_sort=price&_order=${sort}`
 }
   
 
@@ -29,8 +28,9 @@ if(sort){
             setLoading(false)
             console.log(res.data)
         })
-        .catch(()=>{
-      setErr(true)
+        .catch((err)=>{
+    
+      console.log(err)
         })
     }
     useEffect(()=>{
@@ -42,7 +42,9 @@ if(sort){
       setPage(updatepage);
       console.log("data",updatepage)
     };
-      
+      if(loading){
+        return <Loading/>
+      }
     
     return (
         <>

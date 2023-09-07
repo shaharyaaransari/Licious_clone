@@ -1,7 +1,15 @@
+import { Spinner } from "@chakra-ui/react";
 function Loading (){
     return (
       <>
-      <img src="https://media.tenor.com/guhB4PpjrmUAAAAM/loading-loading-gif.gif" alt=""/>
+     <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='blue.500'
+  size='xl'
+  mt={7}
+/>
       </>
     )
   }

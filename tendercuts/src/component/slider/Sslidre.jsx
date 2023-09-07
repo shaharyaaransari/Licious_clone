@@ -1,4 +1,4 @@
-import { Box, Heading, Icon, Image} from "@chakra-ui/react";
+import { Box, Icon, Image} from "@chakra-ui/react";
 import Slider from "react-slick";
 import {GrCaretNext,GrCaretPrevious} from "react-icons/gr"
 
