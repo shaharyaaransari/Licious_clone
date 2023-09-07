@@ -1,7 +1,7 @@
 import { VStack ,Box,Image, Heading, SimpleGrid, Container} from "@chakra-ui/react"
-import ProductSlider from "./Slider"
-import ProductSlider1 from "./Slider2"
-  import  ProductSlider2 from "./Sslidre"
+import ProductSlider from "./slider/Slider"
+import ProductSlider1 from "./slider/Slider2"
+  import  ProductSlider2 from "./slider/Sslidre"
 import {Link} from "react-router-dom"
 function Categories(){
  

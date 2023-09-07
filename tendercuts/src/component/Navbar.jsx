@@ -1,6 +1,6 @@
 import { Search2Icon } from '@chakra-ui/icons';
 import {
-    Box, IconButton, Image, Input, InputGroup, InputLeftElement, Menu, MenuButton, MenuItem, MenuList, Flex, Spacer,
+    Box, IconButton, Image, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Flex, Spacer,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -17,22 +17,21 @@ import { Link } from "react-router-dom"
 
 function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    
     return (
         <>
-            <Box bg='white' w='100%' p={2} color='black' boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"    >
-
+            <Box bg='white' w='100%' p={2} color='black' boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px" 
+               position="sticky" // Add sticky position
+               top={0} // Stick to the top of the viewport
+               zIndex={1000}   >
                 <Flex >
                     <Box w="30%">
-
-                        <Link to="/"> <Image w="50%"
-
-                            src={img1}
-                            ml={10} /></Link>
+                        <Link to="/">
+                            <Image w="50%" src={img1} ml={10} />
+                        </Link>
                     </Box>
                     <Box>
                         <InputGroup mr={14} >
-                            <InputLeftElement
+                            <InputRightElement
                                 variant='outline'
                                 border="none"
                                 children={<IconButton
@@ -42,11 +41,11 @@ function Navbar() {
                                     />}
                                 />}
                             />
-                            <Input type='text' placeholder='Search for any delicious product' 
-                              />
-                             
+                            <Input type='text' placeholder='Search for any delicious product'
+                            />
+
                         </InputGroup>
-                      
+
                     </Box>
                     <Spacer />
                     <Box m={1} _hover={{
@@ -71,18 +70,14 @@ function Navbar() {
                                     seaFood
                                 </MenuItem>
                                 <MenuItem >
-                                <Link to="/Combo" >Combo</Link>
+                                    <Link to="/Combo" >Combo</Link>
                                 </MenuItem>
                                 <MenuItem >
-                                <Link to="/Briyani" >Briyani</Link>
+                                    <Link to="/Briyani" >Briyani</Link>
                                 </MenuItem>
                             </MenuList>
                         </Menu>
-
-
-
                     </Box>
-
                     <Box _hover={{
                         background: "white",
                         color: "#D11243",
@@ -103,14 +98,14 @@ function Navbar() {
                                     <ModalHeader>Sign in to your account</ModalHeader>
                                     <ModalCloseButton />
                                     <ModalBody>
-                                      <Login/>
+                                        <Login />
                                     </ModalBody>
 
                                     <ModalFooter>
                                         <Button colorScheme='blue' mr={3} onClick={onClose}>
                                             Close
                                         </Button>
-                                       
+
                                     </ModalFooter>
                                 </ModalContent>
                             </Modal>
@@ -133,7 +128,6 @@ function Navbar() {
                     </Box>
                 </Flex>
             </Box>
-
         </>
     )
 }

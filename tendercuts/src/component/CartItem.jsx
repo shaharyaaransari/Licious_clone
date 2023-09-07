@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Heading, Image, Stack ,Text} from "@chakra-ui/react";
-function CartItem({price,Arrival,image,desc,title}) {
+function CartItem({price,Arrival,image,desc,title,id,handleDelete}) {
     return (
         <>
             <Card maxW='sm' >
@@ -28,7 +28,7 @@ function CartItem({price,Arrival,image,desc,title}) {
                   <Button variant='solid' colorScheme='red'  >
                      Buy
                     </Button>
-                    <Button variant='solid' colorScheme='red'>DELETE</Button>
+                    <Button variant='solid' colorScheme='red' onClick={()=>handleDelete(id)}>DELETE</Button>
                   </ButtonGroup>
                 </CardFooter>
               </Card>

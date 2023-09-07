@@ -13,20 +13,47 @@ import {
     Button,
     Heading,
     Text,
-   
+    useToast
   } from '@chakra-ui/react';
+import axios from 'axios';
 
   export default function Login() {
+    const toast = useToast()
+    const [token,setToken]=useState("")
     const [email,setEmail] = useState("");
     const { isAuth,handleAuth } = useContext(AuthContext)
     const [password,setPassword] =useState("");
-    const handlesubmit = async() => {
+    const handlesubmit = (e) => {
+      e.preventDefault()
+     console.log("sub")
+     axios.post(`https://reqres.in/api/login`,{email,password})
+   .then((res)=>{
+    handleAuth()
+    setToken(res.data.token)
+    console.log(token,"line31")
+    if(res.data.token){
      
-      fetch(`https://reqres.in/api/login`, { method: "POST", headers: { "Content-Type": "application/json" }, 
-      body: JSON.stringify({email:email,password:password}) }).then((res)=>res.json()).then((data)=>{ handleAuth()
-        alert(`Login succesfully`)
-  
-       })
+      toast({
+        title: 'Login Successful.',
+        description: "We've sucessfully logged into your account",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+    
+      
+     }
+   })
+   .catch((err)=>{
+    console.log(err)
+    toast({
+      title: 'Login Failed.',
+      description: "Sorry try again.",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
+   })
       
   }
   if(isAuth){
@@ -49,7 +76,9 @@ import {
             rounded={'lg'}
             boxShadow={'lg'}
             p={8}>
+                <form action="" onSubmit={handlesubmit}>
             <Stack spacing={4}>
+            
               <FormControl id="email"  >
                 <FormLabel>Email address</FormLabel>
                 <Input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
@@ -69,13 +98,16 @@ import {
                 <Button
                   bg={'blue.400'}
                   color={'white'}
+                  variant="solid" type="submit"
                   _hover={{
                     bg: 'blue.500',
-                  }} onClick={()=>handlesubmit()}>
-                  Sign in
+                  }} >
+                  Sumbit
                 </Button>
               </Stack>
+             
             </Stack>
+            </form>
           </Box>
         </Stack>
       </Flex>

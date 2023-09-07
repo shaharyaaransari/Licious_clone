@@ -39,8 +39,6 @@ export default function ProductSlider1() {
   
 
   const settings = {
-   
-    
     speed: 1000,
     autoplaySpeed: 2000,
     slidesToShow: 4,

@@ -1,4 +1,4 @@
-import { Heading, HStack,Spacer ,Image, Box, Select,  Grid, Button, ButtonGroup} from "@chakra-ui/react";
+import { Heading, HStack ,Image, Box, Select,  Grid, Button, ButtonGroup} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ChickenCard from "./chickenCard";
@@ -7,15 +7,14 @@ import Loading from "./Loading";
 
 function Chicken(){
   const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState(false);
   const [data,setData] =useState([]);
   const [page,setPage] =useState(1);
 
   const [sort,setSort] = useState('')
 // react-slick 
-let url = `https://cute-puce-jackrabbit-robe.cyclic.app/chickenMeat?_page=${page}&_limit=12`
+let url = `https://products-wbq6.onrender.com/chickenMeat?_page=${page}&_limit=12`
 if(sort){
-  url= `https://cute-puce-jackrabbit-robe.cyclic.app/chickenMeat?_page=${page}&_limit=12&_sort=price&_order=${sort}`
+  url= `https://products-wbq6.onrender.com/chickenMeat?_page=${page}&_limit=12&_sort=price&_order=${sort}`
 }
   
 
@@ -27,10 +26,11 @@ if(sort){
          
           setData(res.data)
             setLoading(false)
-            console.log(res.data)
+        //    console.log(res.data)
         })
-        .catch(()=>{
-      setErr(true)
+        .catch((err)=>{
+            console.log(err)
+     
         })
     }
     useEffect(()=>{
@@ -42,6 +42,7 @@ if(sort){
       setPage(updatepage);
       console.log("data",updatepage)
     };
+      
       
     if(loading){
       return <Loading/>
@@ -73,7 +74,7 @@ if(sort){
     
   </Select>
 </Box>
-      <Grid templateColumns='repeat(3, 1fr)' gap={6}>
+      <Grid templateColumns={{sm:'repeat(1, 1fr)',md:'repeat(2, 1fr)',lg:'repeat(4, 1fr)'}} gap={6} mt={4}>
       {
         data?.map((item)=>{
          return  <ChickenCard  key={item.id} {...item} /> 
