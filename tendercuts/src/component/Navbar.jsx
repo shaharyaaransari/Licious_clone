@@ -1,54 +1,75 @@
-import { Search2Icon } from '@chakra-ui/icons';
+import { Search2Icon, CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import {
     Box, IconButton, Image, Input, InputGroup, InputRightElement, Menu, MenuButton, MenuItem, MenuList, Flex, Spacer,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton, useDisclosure, Button
+    useDisclosure, useColorModeValue, Stack
 } from '@chakra-ui/react'
 import { BiCart, BiLayer, BiUser } from "react-icons/bi";
 import img1 from "../images/tendercut.jpg"
-import Login from "./Login"
-import { Link } from "react-router-dom"
 
+import { Link } from "react-router-dom"
+const Links = ['login', 'Chicken', 'Combo'];
+
+const NavLink = (props) => {
+    const { children } = props;
+
+    return (
+        <Box
+            as="a"
+            px={2}
+            py={1}
+            rounded={'md'}
+            _hover={{
+                textDecoration: 'none',
+                bg: useColorModeValue('gray.2001', 'gray.700'),
+            }}
+            href={'#'}
+        >
+            {children}
+        </Box>
+    );
+};
 
 function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-            <Box bg='white' w='100%' p={2} color='black' boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px" 
-               position="sticky" // Add sticky position
-               top={0} // Stick to the top of the viewport
-               zIndex={1000}   >
-                <Flex >
-                    <Box w="30%">
-                        <Link to="/">
-                            <Image w="50%" src={img1} ml={10} />
-                        </Link>
-                    </Box>
-                    <Box>
-                        <InputGroup mr={14} >
-                            <InputRightElement
-                                variant='outline'
-                                border="none"
-                                children={<IconButton
-                                    size='sm'
-                                    icon={<Search2Icon
-                                        border="none"
-                                    />}
-                                />}
-                            />
-                            <Input type='text' placeholder='Search for any delicious product'
-                            />
+            <Box bg='white' w='100%' p={2} color='black' boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
+                position="sticky"
+                top={0}
+                zIndex={1000}   >
+                <Flex alignItems="center"
+                    justifyContent={{ base: "flex-start", md: "center" }} // Align to the left for small screens
+                    flexDirection={{ base: "column", md: "row" }} >
 
-                        </InputGroup>
 
-                    </Box>
+                    <Link to="/">
+                        <Image w={{ base: "35%", md: "50%" }} src={img1} mr={{ base: 4 }} />
+                    </Link>
+                    <Flex alignItems="center" justifyContent="center" display={{ base: "flex", md: "block" }}>
+                        <Box mr={2} mt={3}>
+                            <IconButton
+                                size="md"
+                                icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+                                aria-label="Open Menu"
+                                display={{ md: 'none' }}
+                                onClick={isOpen ? onClose : onOpen}
+                            />
+                        </Box>
+                        <Box mt={2}>
+                            <InputGroup mt={{ base: 2, md: 1 }} display={{ md: "flex" }}>
+                                <InputRightElement variant='outline' border="none"
+                                    children={<IconButton
+                                        size='sm' 
+                                        icon={<Search2Icon border="none" />} />} />
+                                <Input type='text' w={{ base: "300px", md: "300px" }}
+                                    placeholder='Search any delicious product' />
+                            </InputGroup>
+
+                        </Box>
+                    </Flex>
                     <Spacer />
-                    <Box m={1} _hover={{
+
+                    <Box display={{ base: "none", md: "block" }} m={1} _hover={{
                         background: "white",
                         color: "#D11243",
                     }}>
@@ -78,11 +99,11 @@ function Navbar() {
                             </MenuList>
                         </Menu>
                     </Box>
-                    <Box _hover={{
+                    <Box display={{ base: "none", md: "block" }} _hover={{
                         background: "white",
                         color: "#D11243",
                     }}>
-                        <Menu>
+                        <Menu >
                             <MenuButton
                                 as={IconButton}
                                 aria-label='Options'
@@ -90,28 +111,10 @@ function Navbar() {
                                 variant='outline'
                                 border="none"
                                 m={2} />
-                            <Button onClick={onOpen}>Login</Button>
-
-                            <Modal isOpen={isOpen} onClose={onClose}>
-                                <ModalOverlay />
-                                <ModalContent>
-                                    <ModalHeader>Sign in to your account</ModalHeader>
-                                    <ModalCloseButton />
-                                    <ModalBody>
-                                        <Login />
-                                    </ModalBody>
-
-                                    <ModalFooter>
-                                        <Button colorScheme='blue' mr={3} onClick={onClose}>
-                                            Close
-                                        </Button>
-
-                                    </ModalFooter>
-                                </ModalContent>
-                            </Modal>
+                           <Link to="/login"><span >Login</span></Link> 
                         </Menu>
                     </Box>
-                    <Box mr={10} _hover={{
+                    <Box mr={10} display={{ base: "none", md: "block" }} _hover={{
                         background: "white",
                         color: "#D11243",
                     }}>
@@ -127,10 +130,18 @@ function Navbar() {
                         </Menu>
                     </Box>
                 </Flex>
+                {isOpen ? (
+          <Box pb={4} display={{ md: 'none' }}>
+            <Stack as={'nav'} spacing={4}>
+              {Links.map((link) => (
+                <NavLink key={link} ><Link to={`${link}`}><span >{link}</span></Link></NavLink>
+              ))}
+            </Stack>
+          </Box>
+        ) : null}
             </Box>
         </>
     )
 }
-
 
 export default Navbar;
