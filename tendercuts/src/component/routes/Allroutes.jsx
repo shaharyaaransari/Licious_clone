@@ -14,7 +14,7 @@ import Briyani from "../combo/Briyani";
             <Route path="/Cart" element={<Cart/>}/>
             <Route path="/Combo" element={<Combo/>}/>
             <Route path="/Briyani" element={<Briyani/>}/>
-            
+            <Route path="/login" element={<Login/>}/> 
         </Routes>
         </>
     )
