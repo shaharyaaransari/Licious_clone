@@ -1,7 +1,7 @@
 import { Box, Icon, Image} from "@chakra-ui/react";
 import Slider from "react-slick";
 import {GrCaretNext,GrCaretPrevious} from "react-icons/gr"
-
+import { useMediaQuery } from "@chakra-ui/react";
 
 export default function ProductSlider2() {
   function NextArrow(props) {
@@ -37,13 +37,11 @@ export default function ProductSlider2() {
     )
   }
   
-
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   const settings = {
-   
-    
     speed: 1000,
     autoplaySpeed: 2000,
-    slidesToShow: 4,
+    slidesToShow: isLargerThan768 ? 4 : 2,
     swipeToSlide: true,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
@@ -80,7 +78,7 @@ export default function ProductSlider2() {
     }
     ]
     return (
-      <Box className="product" ml="150px"  width="80%">
+      <Box className="product" ml={{ base: "30px", md: "150px" }} mb={{base:"20px",md:"10px"}} width="80%">
         <Slider {...settings}>
             {
               data.map((items ,i)=>(
