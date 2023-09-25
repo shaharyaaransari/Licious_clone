@@ -17,7 +17,7 @@ function ComboItem({ Title, image, description, price, Arrival, id }) {
   const [modalMessage, setModalMessage] = useState("");
 
   const fetchData = () => {
-    axios.get(`https://products-wbq6.onrender.com/Cart`)
+    axios.get(`https://tender-xhl3.onrender.com/Cart`)
       .then((res) => {
         setBiryani(res.data)
 
@@ -37,7 +37,7 @@ function ComboItem({ Title, image, description, price, Arrival, id }) {
       setModalMessage("Item is already in the cart");
     } else {
       axios
-        .post(`https://products-wbq6.onrender.com/Cart`, obj)
+        .post(`https://tender-xhl3.onrender.com/Cart`, obj)
         .then((response) => {
           console.log(response)
           setModalMessage("Item Added successfully");

@@ -12,9 +12,9 @@ function Combo(){
   const [page,setPage] =useState(1);
   const [sort,setSort] = useState('')
 // react-slick 
-let url = `https://products-wbq6.onrender.com/Combos?_page=${page}&_limit=12`
+let url = `https://tender-xhl3.onrender.com/Combos?_page=${page}&_limit=12`
 if(sort){
-  url= `https://products-wbq6.onrender.com/Combos?_page=${page}&_limit=12&_sort=price&_order=${sort}`
+  url= `https://tender-xhl3.onrender.com/Combos?_page=${page}&_limit=12&_sort=price&_order=${sort}`
 }
   
 

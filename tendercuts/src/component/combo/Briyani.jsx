@@ -13,9 +13,9 @@ function Briyani() {
 
   const [sort, setSort] = useState('')
 
-  let url = `https://products-wbq6.onrender.com/Biryani?_page=${page}&_limit=12`
+  let url = `https://tender-xhl3.onrender.com/Biryani?_page=${page}&_limit=12`
   if (sort) {
-    url = `https://products-wbq6.onrender.com/Biryani?_page=${page}&_limit=12&_sort=price&_order=${sort}`
+    url = `https://tender-xhl3.onrender.com/Biryani?_page=${page}&_limit=12&_sort=price&_order=${sort}`
   }
 
 

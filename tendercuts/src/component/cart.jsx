@@ -12,7 +12,7 @@ function Cart() {
 
     }
     const fetchData = () => {
-        axios.get(`https://products-wbq6.onrender.com/Cart`)
+        axios.get(`https://tender-xhl3.onrender.com/Cart`)
             .then((res) => {
                 setData(res.data)
 
@@ -34,7 +34,7 @@ function Cart() {
         // react-hooks/exhaustive-deps
     }, [Price])
     const handleDelete = (id) => {
-        fetch(`https://products-wbq6.onrender.com/Cart/${id}`, {
+        fetch(`https://tender-xhl3.onrender.com/Cart/${id}`, {
             method: "DELETE",
 
         })

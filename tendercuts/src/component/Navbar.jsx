@@ -87,9 +87,7 @@ function Navbar() {
                                 <MenuItem >
                                     <Link to="/Chicken" >Chicken</Link>
                                 </MenuItem>
-                                <MenuItem >
-                                    seaFood
-                                </MenuItem>
+                               
                                 <MenuItem >
                                     <Link to="/Combo" >Combo</Link>
                                 </MenuItem>
