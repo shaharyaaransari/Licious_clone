@@ -2,29 +2,21 @@ import { useState, useEffect } from "react";
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Heading, Image, Stack, Text, Modal, ModalOverlay, ModalContent, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 
-function ChickenCard({ Title, image, description, price, Arrival, id }) {
-  const [data,setData] = useState([]);
+function ChickenCard({ cartData,chickenItem }) {
+ 
+  const { Title, image, description, price, Arrival, id }= chickenItem
   const [modalMessage, setModalMessage] = useState("");
 
   let obj = { id: id, title: Title, image: image, desc: description, price: price, Arrival: Arrival };
   const { isOpen, onOpen, onClose } = useDisclosure();
     
-  const fetchData=()=>{
-    axios.get(`https://tender-xhl3.onrender.com/Cart`)
-    .then((res)=>{
-        setData(res.data)
-      
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
-}
+
 useEffect(()=>{
-fetchData()
+
 },[modalMessage])
 
 const handleCart = () => {
-  const isItemInCart = data.some((el) => el.id === id);
+  const isItemInCart = cartData.some((el) => el.id === id);
   if (isItemInCart) {
     setModalMessage("Item is already in the cart");
   } else {

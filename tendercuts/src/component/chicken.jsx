@@ -3,13 +3,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ChickenCard from "./chickenCard";
 import Loading from "./Loading";
+import { getData } from "../api/fetchData";
 
 
 function Chicken(){
   const [loading, setLoading] = useState(false);
   const [data,setData] =useState([]);
   const [page,setPage] =useState(1);
-  
+const [cartData,setCartData] = useState([])
   const [sort,setSort] = useState('')
 // react-slick 
 let url = `https://tender-xhl3.onrender.com/chickenMeat?_page=${page}&_limit=12`
@@ -35,12 +36,16 @@ if(sort){
     }
     useEffect(()=>{
        fetchData(page)
+     getData(`https://tender-xhl3.onrender.com/Cart`).then((res)=>setCartData(res?.data ))
+     
+      // console.log(getData(`https://tender-xhl3.onrender.com/Cart`))
     },[page,sort])
 
+    
     const handleChange = (val) => {
       let updatepage = page + val;
       setPage(updatepage);
-      console.log("data",updatepage)
+     
     };
       
       
@@ -77,7 +82,7 @@ if(sort){
       <Grid templateColumns={{sm:'repeat(1, 1fr)',md:'repeat(2, 1fr)',lg:'repeat(4, 1fr)'}} gap={6} mt={4}>
       {
         data?.map((item)=>{
-         return  <ChickenCard  key={item.id} {...item} /> 
+         return  <ChickenCard  key={item.id} chickenItem={item} cartData={cartData}/> 
         })
       }
     
