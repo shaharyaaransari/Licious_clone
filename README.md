@@ -1,5 +1,5 @@
 ## Tendercuts
-Deployed Link - https://tendercuts.netlify.app/
+Deployed Link - https://licious-clone-seven.vercel.app/
   ## What is Tendercuts about?
    Tendercuts is an online e-commerce service offering high-quality, fresh seafood and meat.
  ## Features:-
