@@ -21,7 +21,7 @@ function BriyaniCard({ Title, image, description, price, Arrival, id }) {
 }
 useEffect(()=>{
 fetchData()
-},[modalMessage])
+},[])
 
 const handleCart = () => {
   const isItemInCart = biryani.some((el) => el.id === id);

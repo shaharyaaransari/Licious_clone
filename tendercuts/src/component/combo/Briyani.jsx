@@ -19,22 +19,18 @@ function Briyani() {
   }
 
 
-  const fetchData = (page) => {
-    setLoading(true)
-    axios.get(url)
-
-      .then((res) => {
-
-        setData(res.data)
-        setLoading(false)
-        
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
   useEffect(() => {
-    fetchData(page)
+    setLoading(true);
+
+  axios.get(url)
+    .then((res) => {
+      setData(res.data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.log(err);
+      setLoading(false);
+    });
   }, [page, sort])
 
   const handleChange = (val) => {
@@ -43,7 +39,7 @@ function Briyani() {
     console.log("data", updatepage)
   };
   if (loading) {
-    <Loading />
+  return  <Loading />
   }
 
   return (
