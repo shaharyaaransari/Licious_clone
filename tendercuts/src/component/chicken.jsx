@@ -38,7 +38,7 @@ if(sort){
        fetchData(page)
      getData(`https://tender-xhl3.onrender.com/Cart`).then((res)=>setCartData(res?.data ))
      
-      // console.log(getData(`https://tender-xhl3.onrender.com/Cart`))
+     
     },[page,sort])
 
     
